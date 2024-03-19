@@ -1,0 +1,11 @@
+# Simple Client / Server example for Node.js
+ - server is in `server.js`
+ - client is in `client.js`
+ - service is on port 3024, this must be free
+ - client sends a message to the server
+ - server sends a message to the client
+ - `message.js` exports received data handler (`Decoder.recv`) and message transmission (`send`) functions
+ - messages are Buffers (arbitrary binary data)
+ - the first byte of the message indicates how long it is
+ - this means messages are between between (0,255) bytes long
+ - `Decoder.recv` in `message.js` is very careful not to assume that each TCP packet is a single message, because that is only ever true on lightly-loaded dev boxes...
